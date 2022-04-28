@@ -1,0 +1,22 @@
+<app-form-container title="Create Account">
+  <form [formGroup]="form" class="form" (submit)="signUp()">
+    <mat-form-field class="form-field">
+      <mat-label>Display Name</mat-label>
+      <input type="text" matInput formControlName="displayName" placeholder="Display Name">
+      <mat-error *ngIf="form.controls['displayName'].hasError('minlength')">Name is too short</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="email">
+      <mat-error *ngIf="form.controls['email'].hasError('email')">Enter a valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" placeholder="Password">
+      <mat-error *ngIf="form.controls['password'].hasError('minlength')">Password is too short</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" [disabled]="form.invalid">Create Account</button>
+    <a routerLink="/signin" class="mat-caption goto-link">Already have an account? Go to signin</a>
+  </form>
+</app-form-container>

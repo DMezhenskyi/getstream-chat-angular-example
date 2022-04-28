@@ -1,0 +1,16 @@
+<app-form-container title="Sign In">
+  <form [formGroup]="form" class="form" (submit)="signIn()">
+    <mat-form-field class="form-field">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email" placeholder="email">
+      <mat-error *ngIf="form.controls['email'].hasError('email')">Enter a valid email</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" placeholder="Password">
+      <mat-error *ngIf="form.controls['password'].hasError('minlength')">Password is too short</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" [disabled]="form.invalid">Sign In</button>
+  </form>
+</app-form-container>

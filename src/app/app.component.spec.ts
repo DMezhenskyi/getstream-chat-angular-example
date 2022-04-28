@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'getstream-chat-angular-example'`, () => {
+  it(`should have as title 'get-stream-io-draft'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('getstream-chat-angular-example');
+    expect(app.title).toEqual('get-stream-io-draft');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('getstream-chat-angular-example app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('get-stream-io-draft app is running!');
   });
 });

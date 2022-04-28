@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './features/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'getstream-chat-angular-example';
+  title = 'get-stream-io-draft';
+  constructor(public auth: AuthService) {}
 }
