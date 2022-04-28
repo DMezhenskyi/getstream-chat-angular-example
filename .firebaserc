@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "get-stream-io-decoded": {
+      "hosting": {
+        "getstream-chat-angular-example": [
+          "get-stream-io-decoded"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "get-stream-io-decoded"
+  }
+}

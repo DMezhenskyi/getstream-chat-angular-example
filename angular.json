@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "getstream-chat-angular-example:build:production",
+            "firebaseProject": "get-stream-io-decoded",
+            "firebaseHostingSite": "get-stream-io-decoded"
+          }
         }
       }
     }
