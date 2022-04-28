@@ -10,6 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 declarations: [
@@ -25,7 +26,8 @@ declarations: [
     MatButtonModule,
     MatDividerModule,
     RouterModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    HttpClientModule
   ]
 })
 export class AuthModule { }

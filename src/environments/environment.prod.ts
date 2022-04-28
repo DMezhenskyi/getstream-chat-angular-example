@@ -7,5 +7,6 @@ export const environment = {
     authDomain: 'get-stream-io-decoded.firebaseapp.com',
     messagingSenderId: '927914767744',
   },
-  production: true
+  production: true,
+  apiUrl: 'https://us-central1-get-stream-io-decoded.cloudfunctions.net'
 };
