@@ -1,1 +1,7 @@
-<p>chat-page works!</p>
+<section class="chat" *ngIf="chatIsReady$ | async; else unavailable">
+    <p>chat is working...</p>
+</section>
+
+<ng-template #unavailable>
+    <div class="chat-notification">Chat is not available...</div>
+</ng-template>

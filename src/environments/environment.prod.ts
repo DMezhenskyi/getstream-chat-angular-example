@@ -8,5 +8,8 @@ export const environment = {
     messagingSenderId: '927914767744',
   },
   production: true,
-  apiUrl: 'https://us-central1-get-stream-io-decoded.cloudfunctions.net'
+  apiUrl: 'https://us-central1-get-stream-io-decoded.cloudfunctions.net',
+  stream: {
+    key: 'wxgsgqrws5v8'
+  }
 };

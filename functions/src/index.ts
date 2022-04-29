@@ -29,3 +29,19 @@ export const createStreamUser = functions.https.onRequest((request, response) =>
         }
     })
 });
+
+export const createStreamToken = functions.https.onRequest((request, response) => {
+    cors(request, response, async () => {
+      const { user } = request.body;
+      if (!user) {
+        throw new functions.https.HttpsError('failed-precondition', 'The function must be called ' +
+        'while authenticated.');
+      }
+      try {
+        const token = await serverStreamClient.createToken(user.uid);
+        response.status(200).send({ token })
+      } catch(err) {
+        throw new functions.https.HttpsError('aborted', "Could not get Stream user");
+      }
+    });
+  });
