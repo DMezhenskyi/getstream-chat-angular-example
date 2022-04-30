@@ -13,3 +13,7 @@
 <ng-template #unavailable>
     <div class="chat-notification">Chat is not available...</div>
 </ng-template>
+
+<ng-template #channelActionsTemplate let-channel="channel">
+    <app-invite-button [channel]="channel"></app-invite-button>
+</ng-template>

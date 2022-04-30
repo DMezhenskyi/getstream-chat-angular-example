@@ -1,0 +1,18 @@
+<button mat-stroked-button (click)="showDialog = true">Add users</button>
+
+<stream-modal [(isOpen)]="showDialog">
+    <mat-form-field>
+        <mat-label>Search for users</mat-label>
+        <input
+            type="text"
+            placeholder="Start to Type"
+            matInput
+            [formControl]="userSearchField"
+            [matAutocomplete]="auto">
+    </mat-form-field>
+    <mat-autocomplete (optionSelected)="addToChat($event)" #auto="matAutocomplete" autoActiveFirstOption>
+        <mat-option *ngFor="let user of availableUsers$ | async" [value]="user.id">
+            {{ user.name }}
+        </mat-option>
+    </mat-autocomplete>
+</stream-modal>

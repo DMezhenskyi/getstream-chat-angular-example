@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
 import { catchError, Observable, of, switchMap, map, from } from 'rxjs';
-import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
+import { ChannelActionsContext, ChannelService, ChatClientService, CustomTemplatesService, StreamI18nService } from 'stream-chat-angular';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
 
@@ -10,15 +10,19 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./chat-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChatPageComponent implements OnInit {
+export class ChatPageComponent implements OnInit, AfterViewInit {
 
   chatIsReady$!: Observable<boolean>;
+
+  @ViewChild('channelActionsTemplate')
+  private channelActionsTemplate!: TemplateRef<ChannelActionsContext>;
 
   constructor(
     private chatService: ChatClientService,
     private channelService: ChannelService,
     private streamI18nService: StreamI18nService,
-    private auth: AuthService
+    private auth: AuthService,
+    private customTemplatesService: CustomTemplatesService
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +40,11 @@ export class ChatPageComponent implements OnInit {
       map(() => true),
       catchError(() => of(false))
     )
+  }
+  ngAfterViewInit(): void {
+      this.customTemplatesService.channelActionsTemplate$.next(
+        this.channelActionsTemplate
+      )
   }
 
   onCreate(name: string) {
