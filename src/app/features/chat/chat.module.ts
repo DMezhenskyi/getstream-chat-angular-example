@@ -5,6 +5,7 @@ import { ChatRoutingModule } from './chat-routing.module';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-angular';
+import { ChannelsModule } from '../channels/channels.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { StreamChatModule, StreamAutocompleteTextareaModule } from 'stream-chat-
     TranslateModule.forChild(),
     StreamChatModule,
     StreamAutocompleteTextareaModule,
+    ChannelsModule,
   ]
 })
 export class ChatModule { }
