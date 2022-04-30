@@ -14,6 +14,13 @@
     <div class="chat-notification">Chat is not available...</div>
 </ng-template>
 
+<ng-template #channelPreview let-channel="channel">
+    <section (click)="activateChannel(channel)">
+        <h1>{{channel.data?.name}}</h1>
+        <div>{{channel?.state?.messages.at(-1)?.text}}</div>
+    </section>
+</ng-template>
+
 <ng-template #channelActionsTemplate let-channel="channel">
     <app-invite-button [channel]="channel"></app-invite-button>
 </ng-template>

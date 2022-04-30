@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, TemplateRef, AfterViewInit } from '@angular/core';
 import { catchError, Observable, of, switchMap, map, from } from 'rxjs';
-import { ChannelActionsContext, ChannelService, ChatClientService, CustomTemplatesService, StreamI18nService } from 'stream-chat-angular';
+import { Channel } from 'stream-chat';
+import { ChannelActionsContext, ChannelPreviewContext, ChannelService, ChatClientService, CustomTemplatesService, DefaultStreamChatGenerics, StreamI18nService } from 'stream-chat-angular';
 import { environment } from '../../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
 
@@ -16,6 +17,8 @@ export class ChatPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('channelActionsTemplate')
   private channelActionsTemplate!: TemplateRef<ChannelActionsContext>;
+  @ViewChild('channelPreview')
+  private channelPreview!: TemplateRef<ChannelPreviewContext>;
 
   constructor(
     private chatService: ChatClientService,
@@ -42,6 +45,9 @@ export class ChatPageComponent implements OnInit, AfterViewInit {
     )
   }
   ngAfterViewInit(): void {
+      this.customTemplatesService.channelPreviewTemplate$.next(
+        this.channelPreview
+      )
       this.customTemplatesService.channelActionsTemplate$.next(
         this.channelActionsTemplate
       )
@@ -57,6 +63,10 @@ export class ChatPageComponent implements OnInit, AfterViewInit {
       members: [this.auth.getCurrentUser().uid]
     });
     from(channel.create());
+  }
+
+  activateChannel(channel: Channel<DefaultStreamChatGenerics>) {
+    this.channelService.setAsActiveChannel(channel);
   }
 
 }
