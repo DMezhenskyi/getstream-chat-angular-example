@@ -12,7 +12,7 @@
     </mat-form-field>
     <mat-form-field class="form-field">
       <mat-label>Password</mat-label>
-      <input type="password" matInput formControlName="password" placeholder="Password">
+      <input type="password" matInput formControlName="password" required placeholder="Password">
       <mat-error *ngIf="form.controls['password'].hasError('minlength')">Password is too short</mat-error>
     </mat-form-field>
 
